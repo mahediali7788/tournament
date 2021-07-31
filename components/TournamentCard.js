@@ -105,7 +105,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     // width: width,
     borderRadius: 10,
-    paddingBottom:10
+    paddingBottom:10,
+    margin:20
   },
   tournamentDetailsLayout: {
     flexDirection: "row",

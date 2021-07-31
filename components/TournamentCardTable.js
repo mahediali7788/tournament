@@ -4,14 +4,17 @@ import { Avatar, Caption, Divider } from "react-native-paper";
 import { colors } from "../theme/colors";
 import Entypo from "react-native-vector-icons/Entypo";
 import AvatarWithName from "./AvatarWithName";
-import { Table, Row, Rows } from "react-native-table-component";
-import { Header } from "react-native/Libraries/NewAppScreen";
+import { dataTable } from "../API/dataTable";
+import { LinearGradient } from "expo-linear-gradient";
 
 const { width } = Dimensions.get("screen");
 
 const TournamentCardTable = () => {
   return (
-    <View style={styles.mainLayout}>
+    <LinearGradient
+      colors={[colors.primary, colors.secondary]}
+      style={styles.mainLayout}
+    >
       <View style={styles.tournamentDetailsLayout}>
         <Avatar.Icon
           icon={({ color, size }) => (
@@ -38,42 +41,69 @@ const TournamentCardTable = () => {
         </View>
       </View>
 
-      <View style={styles.userAndTableView}>
-        <View style={styles.userListView}>
-          <FlatList
-            data={DataTable}
-            keyExtractor={(item) => Math.random()}
-            renderItem={({ item, index }) => (
-              <View key={index} style={{ marginTop: 15 }}>
-                <AvatarWithName
-                  avatarSize={35}
-                  userName={index + 1}
-                  flexDirection="row"
-                  userAvatar="https://i.pinimg.com/280x280_RS/1c/a0/46/1ca046c89d753aa437e946391318e730.jpg"
-                  marginStart={20}
-                />
-              </View>
-            )}
-          />
-
-        </View>
-        <Table style={{ flex: 0.7 }}>
-          <Row textStyle={styles.tableHeadStyle} data={HeadTable} />
-          <Rows textStyle={styles.tableDataStyle} data={DataTable} />
-          
-        </Table>
+      <View style={{flexDirection:'row-reverse', padding:10}}>
+            {
+                HeadTable.map((item, index)=>{
+                    return(
+                        <Text style={{color:'white', marginHorizontal:18}} key={item.id}>{item.name}</Text>
+                    )
+                })
+            }
       </View>
-    </View>
+
+      <View style={styles.userAndTableView}>
+        <FlatList
+          data={dataTable}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item, index }) => (
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-around",
+                alignItems: "center",
+                margin: 10,
+                flex: 8,
+              }}
+            >
+              <View style={{ flex: 1, alignItems: "center" }}>
+                <Text style={{ color: "white" }}>{item.id}</Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <Avatar.Image source={{ uri: item.avatar }} size={30} />
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.tableDataStyle}>{item.points}</Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.tableDataStyle}>{item.P}</Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.tableDataStyle}>{item.W}</Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.tableDataStyle}>{item.D}</Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.tableDataStyle}>{item.L}</Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.tableDataStyle}>{item.rate}</Text>
+              </View>
+            </View>
+          )}
+        />
+      </View>
+    </LinearGradient>
   );
 };
 
-const HeadTable = ["Pts", "P", "W", "D", "L", "+/-"];
-
-const DataTable = [
-  ["21", "21", "11", "3", "2", "9-2"],
-  ["21", "21", "11", "3", "2", "9-2"],
-  ["21", "21", "11", "3", "2", "9-2"],
-  ["21", "21", "11", "3", "2", "9-2"],
+const HeadTable = [
+    { name: "+/-", id: "6" },
+    { name: "L", id: "5" },
+    { name: "D", id: "4" },
+    { name: "W", id: "3" },
+    { name: "P", id: "2" },
+  { name: "Pts", id: "1" },
 ];
 
 const styles = StyleSheet.create({
@@ -82,6 +112,7 @@ const styles = StyleSheet.create({
     // width: width,
     borderRadius: 10,
     paddingBottom: 10,
+    margin:20
   },
   tournamentDetailsLayout: {
     flexDirection: "row",
@@ -108,15 +139,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   tableDataStyle: {
-    textAlign: "center",
-    fontSize: 30,
+    fontSize: 22,
     fontWeight: "bold",
     color: "white",
-    marginTop: 10,
   },
   userAndTableView: {
-    flexDirection: "row",
-    padding: 10,
+    flexDirection: "column",
   },
   userListView: {
     flex: 0.3,

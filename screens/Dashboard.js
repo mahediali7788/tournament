@@ -6,12 +6,8 @@ import TournamentCardTable from "../components/TournamentCardTable";
 const Dashboard = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
-
-
-      {/* <View style={{padding:10}}>
-        <TournamentCard />
-      </View> */}
-      {/* <TournamentCardTable/> */}
+      <TournamentCard />
+      <TournamentCardTable />
     </View>
   );
 };
