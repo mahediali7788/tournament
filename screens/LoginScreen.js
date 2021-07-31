@@ -60,7 +60,9 @@ const LoginScreen = ({ navigation }) => {
               colors={[colors.primary, colors.secondary]}
               style={styles.button}
             >
-              <Text style={styles.text}>SIGN IN</Text>
+              <Text onPress={()=>{
+                navigation.replace("Dashboard")
+              }} style={styles.text}>SIGN IN</Text>
             </LinearGradient>
           </View>
         </View>

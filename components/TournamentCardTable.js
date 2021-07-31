@@ -20,7 +20,7 @@ const TournamentCardTable = () => {
           icon={({ color, size }) => (
             <Entypo name="trophy" size={size} color={colors.colorBlack} />
           )}
-          style={{ backgroundColor: colors.colorWhite }}
+          style={{ backgroundColor: colors.colorWhite}}
         />
         <View style={styles.tournamentDetailsText}>
           <Text style={{ color: colors.colorWhite, fontSize: 25 }}>
@@ -112,7 +112,6 @@ const styles = StyleSheet.create({
     // width: width,
     borderRadius: 10,
     paddingBottom: 10,
-    margin:20
   },
   tournamentDetailsLayout: {
     flexDirection: "row",

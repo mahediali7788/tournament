@@ -4,6 +4,7 @@ import {
   TransitionSpecs,
 } from "@react-navigation/stack";
 import React from 'react';
+import Dashboard from "../screens/Dashboard";
 import LoginScreen from "../screens/LoginScreen";
 import OnboardingScreen from "../screens/OnboardingScreen";
 import SignupScreen from "../screens/SignupScreen";
@@ -17,7 +18,7 @@ const AuthStack = () => {
       screenOptions={{
         gestureEnabled: true,
         gestureResponseDistance: {
-          horizontal: 150,
+          horizontal: 50,
         },
         ...MyTransition,
       }}
@@ -43,6 +44,17 @@ const AuthStack = () => {
           headerTitle: null,
         }}
       />
+      <Auth.Screen
+        name="Dashboard"
+        component={Dashboard}
+        options={{
+          headerShown: false,
+          headerTransparent: true,
+          headerBackTitleVisible: false,
+          headerTitle: null,
+        }}
+      />
+      
     </Auth.Navigator>
   );
 };

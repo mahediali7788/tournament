@@ -1,10 +1,12 @@
 import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
 import React, { useEffect } from "react";
 import {AsyncStorage} from 'react-native'
 import TournamentCard from "./components/TournamentCard";
 import TournamentCardTable from "./components/TournamentCardTable";
 import Dashboard from "./screens/Dashboard";
 import OnboardingScreen from "./screens/OnboardingScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 import AppStack from "./stack/AppStack";
 import AuthStack from "./stack/AuthStack";
 
@@ -31,15 +33,18 @@ export default function App() {
   // }
   // else if (isFirstLaunched === true) {
   //   return (
-  //     <OnboardingScreen />
+  //     <NavigationContainer>
+  //       <AuthStack />
+  //     </NavigationContainer>
   //   );
   // } else {
   //   return (
   //     <NavigationContainer>
+  //       <StatusBar translucent={true} />
   //       <AuthStack />
   //     </NavigationContainer>
   //   );
   // }
 
-  return(<Dashboard />)
+  return(<ProfileScreen />)
 }
