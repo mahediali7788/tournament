@@ -95,6 +95,54 @@ const friendsList = [
     }
 ]
 
+const gameList = [
+    {
+        id:"1",
+        avatar:"https://i.pinimg.com/280x280_RS/1c/a0/46/1ca046c89d753aa437e946391318e730.jpg",
+        points:"21",
+        P:"21",
+        W:"11",
+        D:"3",
+        L:"1",
+        rate:"9-2",
+        gameName:"FootBall",
+        matchdate:"15/06/2021",
+        iconName:"football",
+        gameType:"PLAYOFF"
+    },
+    {
+        id:"2",
+        avatar:"https://i.pinimg.com/280x280_RS/1c/a0/46/1ca046c89d753aa437e946391318e730.jpg",
+        points:"20",
+        P:"23",
+        W:"1",
+        D:"8",
+        L:"11",
+        rate:"7-2",
+        gameName:"WorldCup",
+        matchdate:"15/06/2018",
+        iconName:"ios-trophy",
+        gameType:"CUP"
+    },
+]
+
+const invite = [
+    {
+        id:"1",
+        gameName:"World Cup",
+        matchData:"15/06/2021",
+        gameType:"CUP",
+        iconName:"ios-trophy"
+    },
+    {
+        id:"2",
+        gameName:"Collage Football",
+        matchData:"15/06/2018",
+        gameType:"PLAYOFF",
+        iconName:"football"
+    }
+]
+
 
 export default dataTable;
-export {friendsList}
+export {friendsList, gameList, invite}

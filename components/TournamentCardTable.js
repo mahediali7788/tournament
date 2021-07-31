@@ -2,41 +2,41 @@ import React from "react";
 import { Dimensions, FlatList, StyleSheet, Text, View } from "react-native";
 import { Avatar, Caption, Divider } from "react-native-paper";
 import { colors } from "../theme/colors";
-import Entypo from "react-native-vector-icons/Entypo";
+import IonIcon from "react-native-vector-icons/Ionicons";
 import AvatarWithName from "./AvatarWithName";
-import { dataTable } from "../API/dataTable";
+import { dataTable, gameList } from "../API/dataTable";
 import { LinearGradient } from "expo-linear-gradient";
 
 const { width } = Dimensions.get("screen");
 
-const TournamentCardTable = () => {
+const TournamentCardTable = ({gameName, gameType, matchDate, iconName, colorsGrad, gameNameColor, gameTypeColor, matchDateColor, iconBackColor}) => {
   return (
     <LinearGradient
-      colors={[colors.primary, colors.secondary]}
+      colors={colorsGrad}
       style={styles.mainLayout}
     >
       <View style={styles.tournamentDetailsLayout}>
         <Avatar.Icon
           icon={({ color, size }) => (
-            <Entypo name="trophy" size={size} color={colors.colorBlack} />
+            <IonIcon name={iconName}  size={size} color={colors.colorBlack} />
           )}
-          style={{ backgroundColor: colors.colorWhite}}
+          style={{ backgroundColor: colors.colorAccent}}
         />
         <View style={styles.tournamentDetailsText}>
-          <Text style={{ color: colors.colorWhite, fontSize: 25 }}>
-            Football
+          <Text style={{ color: gameNameColor, fontSize: 25 }}>
+            {gameName}
           </Text>
-          <Caption style={{ color: colors.colorWhiteTwo }}>15/06/2021</Caption>
+          <Caption style={{ color: matchDateColor }}>{matchDate}</Caption>
         </View>
         <View style={{ alignItems: "center", position: "absolute", end: 20 }}>
           <Text
             style={{
               fontSize: 28,
-              color: colors.colorWhite,
+              color: gameTypeColor,
               fontWeight: "bold",
             }}
           >
-            PLAYOFF
+            {gameType}
           </Text>
         </View>
       </View>
@@ -53,7 +53,7 @@ const TournamentCardTable = () => {
 
       <View style={styles.userAndTableView}>
         <FlatList
-          data={dataTable}
+          data={gameList}
           keyExtractor={(item) => item.id}
           renderItem={({ item, index }) => (
             <View

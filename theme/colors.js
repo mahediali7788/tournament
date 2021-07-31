@@ -6,6 +6,8 @@ export const colors = {
     colorWhite:"#ffffff",
     colorAccent:"#41FFD9",
     colorBlack:"#000000",
+    colorBlackOne:"#17181D",
+    colorBlackTwo:"#1A1A1A",
     colorGrey:"grey",
     colorSmokeWhite:"#f1f1f1"
 }

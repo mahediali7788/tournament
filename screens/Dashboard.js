@@ -1,5 +1,5 @@
 import React from "react";
-import { StatusBar } from "react-native";
+import { StatusBar, TouchableOpacity } from "react-native";
 import { Dimensions, StyleSheet, Text, View } from "react-native";
 import IconDivideText from "../components/IconDivideText";
 import TournamentCard from "../components/TournamentCard";
@@ -18,32 +18,42 @@ const { width } = Dimensions.get("screen");
 const Dashboard = ({ navigation }) => {
   return (
     <View style={styles.root}>
+      <StatusBar translucent={true} />
       <View style={styles.appbar}>
-        <View style={{ flexDirection: "column", alignItems: "center" }}>
-          <FontAwesome5 name="user-alt" size={20} color={colors.colorBlack} />
-          <Caption>Profile</Caption>
-        </View>
-        <View
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("ProfileScreen");
+          }}
+        >
+          <View style={{ flexDirection: "column", alignItems: "center" }}>
+            <FontAwesome5 name="user-alt" size={20} color={colors.colorBlack} />
+            <Caption>Profile</Caption>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
           style={{
-            flexDirection: "column",
-            alignItems: "center",
             position: "absolute",
             right: 10,
             marginTop: 10,
           }}
+          onPress={() => {
+            navigation.navigate("CommunityScreen");
+          }}
         >
-          <FontAwesome5
-            name="user-friends"
-            size={20}
-            color={colors.colorBlack}
-          />
-          <Badge
-            status="error"
-            value="2"
-            containerStyle={{ position: "absolute", top: -10, end: 16 }}
-          />
-          <Caption>Community</Caption>
-        </View>
+          <View style={{ flexDirection: "column", alignItems: "center" }}>
+            <FontAwesome5
+              name="user-friends"
+              size={20}
+              color={colors.colorBlack}
+            />
+            <Badge
+              status="error"
+              value="2"
+              containerStyle={{ position: "absolute", top: -10, end: 16 }}
+            />
+            <Caption>Community</Caption>
+          </View>
+        </TouchableOpacity>
       </View>
       <ScrollView showsHorizontalScrollIndicator={false}>
         <View
@@ -65,9 +75,9 @@ const Dashboard = ({ navigation }) => {
         <View style={{ margin: 20 }}>
           <TournamentCard />
         </View>
-        <View style={{ marginHorizontal: 20 }}>
-          <TournamentCardTable />
-        </View>
+        {/* <View style={{ marginHorizontal: 20 }}>
+          <TournamentCardTable  />
+        </View> */}
 
         <View style={{ alignItems: "center", margin: 20 }}>
           <Avatar.Icon

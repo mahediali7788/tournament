@@ -3,10 +3,12 @@ import {
   HeaderStyleInterpolators,
   TransitionSpecs,
 } from "@react-navigation/stack";
-import React from 'react';
+import React from "react";
+import CommunityScreen from "../screens/CommunityScreen";
 import Dashboard from "../screens/Dashboard";
 import LoginScreen from "../screens/LoginScreen";
 import OnboardingScreen from "../screens/OnboardingScreen";
+import ProfileScreen from "../screens/ProfileScreen";
 import SignupScreen from "../screens/SignupScreen";
 
 const Auth = createStackNavigator();
@@ -18,7 +20,7 @@ const AuthStack = () => {
       screenOptions={{
         gestureEnabled: true,
         gestureResponseDistance: {
-          horizontal: 50,
+          horizontal: 100,
         },
         ...MyTransition,
       }}
@@ -54,7 +56,28 @@ const AuthStack = () => {
           headerTitle: null,
         }}
       />
-      
+
+      <Auth.Screen
+        name="ProfileScreen"
+        component={ProfileScreen}
+        options={{
+          headerShown: false,
+          headerTransparent: true,
+          headerBackTitleVisible: false,
+          headerTitle: null,
+        }}
+      />
+
+      <Auth.Screen
+        name="CommunityScreen"
+        component={CommunityScreen}
+        options={{
+          headerShown: false,
+          headerTransparent: true,
+          headerBackTitleVisible: false,
+          headerTitle: null,
+        }}
+      />
     </Auth.Navigator>
   );
 };
@@ -76,12 +99,12 @@ const MyTransition = {
               outputRange: [layouts.screen.width, 0],
             }),
           },
-          // {
-          //   rotate: current.progress.interpolate({
-          //     inputRange: [0, 1],
-          //     outputRange: [1, 0],
-          //   }),
-          // },
+          {
+            rotate: current.progress.interpolate({
+              inputRange: [0, 1],
+              outputRange: [1, 0],
+            }),
+          },
           {
             scale: next
               ? next.progress.interpolate({

@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import {AsyncStorage} from 'react-native'
 import TournamentCard from "./components/TournamentCard";
 import TournamentCardTable from "./components/TournamentCardTable";
+import CommunityScreen from "./screens/CommunityScreen";
 import Dashboard from "./screens/Dashboard";
 import OnboardingScreen from "./screens/OnboardingScreen";
 import ProfileScreen from "./screens/ProfileScreen";
@@ -28,23 +29,23 @@ export default function App() {
     });
   }
 
-  // if(isFirstLaunched === null){
-  //   return null
-  // }
-  // else if (isFirstLaunched === true) {
-  //   return (
-  //     <NavigationContainer>
-  //       <AuthStack />
-  //     </NavigationContainer>
-  //   );
-  // } else {
-  //   return (
-  //     <NavigationContainer>
-  //       <StatusBar translucent={true} />
-  //       <AuthStack />
-  //     </NavigationContainer>
-  //   );
-  // }
+  if(isFirstLaunched === null){
+    return null
+  }
+  else if (isFirstLaunched === true) {
+    return (
+      <NavigationContainer>
+        <AuthStack />
+      </NavigationContainer>
+    );
+  } else {
+    return (
+      <NavigationContainer>
+        <StatusBar translucent={true} />
+        <AuthStack />
+      </NavigationContainer>
+    );
+  }
 
-  return(<ProfileScreen />)
+  // return(<AuthStack />)
 }
